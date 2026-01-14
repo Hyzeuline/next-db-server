@@ -1,4 +1,6 @@
-import { connectToDbIfNotConnected } from "../middleware/connectToDbIfNotConnected";
+"use server";
+
+import { revalidatePath } from "next/cache";
 import Todo from "../models/Todo";
 
 export const createTodo = async (
@@ -9,12 +11,13 @@ export const createTodo = async (
     const title = formData.get("title");
     const isDone = false;
     if (!title) return "Veuillez remplir un titre";
-    await connectToDbIfNotConnected();
+
     await Todo.create({
       title,
       isDone,
     });
     console.log("todo créée !");
+    revalidatePath("/list");
     return null;
   } catch (error) {
     return "Une erreur est survenue";

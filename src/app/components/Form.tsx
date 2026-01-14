@@ -8,8 +8,10 @@ const Form = () => {
 
   return (
     <form action={formAction}>
-      <input type="text" />
-      <button disabled={isPending}>Ajouter la tâche</button>
+      <input type="text" placeholder="tâches" name="title" />
+      <button type="submit" disabled={isPending}>
+        Ajouter la tâche
+      </button>
     </form>
   );
 };

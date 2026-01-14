@@ -1,13 +1,15 @@
 import Form from "../components/Form";
-import List from "../components/List";
+import { List } from "../components/List";
+import { getTodos } from "../querys/getTodos";
 
 export const dynamic = "force-dynamic";
 
-const ListPage = () => {
+const ListPage = async () => {
+  const data = await getTodos();
   return (
     <div>
       <h2>TodoList</h2>
-      <List />
+      <List data={data} />
       <Form />
     </div>
   );
