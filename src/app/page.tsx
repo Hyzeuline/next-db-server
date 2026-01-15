@@ -2,8 +2,10 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div>
-      <Link href="/list">Bienvenue sur ma TodoList</Link>
+    <div className="flex flex-col">
+      <h1>Bienvenue sur mon App TodoList</h1>
+      <Link href="/users/signup">Sign Up</Link>
+      <Link href="/users/login">Log in</Link>
     </div>
   );
 }

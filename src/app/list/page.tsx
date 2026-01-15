@@ -1,6 +1,7 @@
-import Form from "../components/Form";
-import { List } from "../components/List";
-import { getTodos } from "../querys/getTodos";
+import { List } from "@/components/List";
+
+import Form from "@/components/Form";
+import { getTodos } from "@/querys/getTodos";
 
 export const dynamic = "force-dynamic";
 

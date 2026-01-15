@@ -1,5 +1,6 @@
-import { connectToDbIfNotConnected } from "@/app/middleware/connectToDbIfNotConnected";
-import Todo from "@/app/models/Todo";
+import { connectToDbIfNotConnected } from "@/middleware/connectToDbIfNotConnected";
+import Todo from "@/models/Todo";
+
 import { NextRequest, NextResponse } from "next/server";
 
 export const GET = async (request: NextRequest) => {

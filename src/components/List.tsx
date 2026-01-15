@@ -2,9 +2,9 @@
 
 import { startTransition } from "react";
 
-import deleteTodo from "../actions/deleteTodo";
-import checkedTodo from "../actions/checkedTodo";
 import { TTodo } from "../types";
+import checkedTodo from "@/actions/checkedTodo";
+import deleteTodo from "@/actions/deleteTodo";
 
 type Props = {
   data: TTodo[];

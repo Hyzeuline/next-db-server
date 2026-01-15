@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 
 import "./globals.css";
-import { connectToDbIfNotConnected } from "./middleware/connectToDbIfNotConnected";
+import { connectToDbIfNotConnected } from "@/middleware/connectToDbIfNotConnected";
+import Header from "@/components/Header";
 
 export const metadata: Metadata = {
   title: "Next BDD server",
@@ -16,7 +17,11 @@ export default async function RootLayout({
   await connectToDbIfNotConnected();
   return (
     <html lang="en">
-      <body className={` antialiased`}>{children}</body>
+      <body className={` antialiased`}>
+        {" "}
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }
