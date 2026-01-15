@@ -12,6 +12,7 @@ const Form = () => {
       <button type="submit" disabled={isPending}>
         Ajouter la tâche
       </button>
+      {error && <p className="text-red-500">{error}</p>}
     </form>
   );
 };

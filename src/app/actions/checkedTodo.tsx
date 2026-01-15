@@ -2,9 +2,12 @@
 
 import { revalidatePath } from "next/cache";
 import Todo from "../models/Todo";
+import { TTodoDocument } from "../types";
+import { connectToDbIfNotConnected } from "../middleware/connectToDbIfNotConnected";
 
 const checkedTodo = async (id: string) => {
-  const todo = await Todo.findById(id);
+  await connectToDbIfNotConnected();
+  const todo: TTodoDocument | null = await Todo.findById(id);
   if (!todo) return;
 
   todo.isDone = !todo.isDone;
@@ -13,3 +16,5 @@ const checkedTodo = async (id: string) => {
 };
 
 export default checkedTodo;
+
+//serialize pour enlever les méthodes mongoose invisibles

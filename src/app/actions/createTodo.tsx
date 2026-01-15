@@ -9,17 +9,24 @@ export const createTodo = async (
 ) => {
   try {
     const title = formData.get("title");
-    const isDone = false;
-    if (!title) return "Veuillez remplir un titre";
+    if (!title) throw new Error("Missing title");
 
     await Todo.create({
-      title,
-      isDone,
+      title: title,
+      isDone: false,
     });
-    console.log("todo créée !");
     revalidatePath("/list");
     return null;
   } catch (error) {
-    return "Une erreur est survenue";
+    if (error instanceof Error) {
+      switch (error.message) {
+        case "Missing title":
+          return "Veuillez donner un nom à votre nouvelle tache";
+        default:
+          return "Une erreur est survenue";
+      }
+    } else {
+      return "Une erreur est survenue";
+    }
   }
 };

@@ -1,6 +1,6 @@
 "use client";
 
-import { startTransition, useActionState } from "react";
+import { startTransition } from "react";
 
 import deleteTodo from "../actions/deleteTodo";
 import checkedTodo from "../actions/checkedTodo";
@@ -11,14 +11,11 @@ type Props = {
 };
 
 export const List = ({ data }: Props) => {
-  const [deleteAction] = useActionState(deleteTodo, null);
-  const [checkedAction] = useActionState(checkedTodo, null);
-
   return (
-    <div className="flex gap-4">
+    <div className="m-2">
       {data.map(todo => {
         return (
-          <article key={todo._id} className="flex gap-4">
+          <div key={todo._id} className=" flex flex-row gap-4">
             <input
               type="checkbox"
               checked={todo.isDone}
@@ -26,10 +23,8 @@ export const List = ({ data }: Props) => {
               onChange={() => startTransition(() => checkedTodo(todo._id))}
             />
             <h2>{todo.title}</h2>
-            <button onClick={() => startTransition(() => deleteTodo(todo._id))}>
-              Trash
-            </button>
-          </article>
+            <button onClick={() => deleteTodo(todo._id)}>Trash</button>
+          </div>
         );
       })}
     </div>
